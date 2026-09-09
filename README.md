@@ -1,4 +1,4 @@
-# Cortex ERC721R NFT
+# Cortex ERC721R NFT  -- harshil thummar
 
 Cortex is an **ERC721R-based NFT smart contract** that implements NFT minting with a built-in **refund mechanism**. NFT holders can return their NFT within a predefined refund period and receive the mint price back.
 
