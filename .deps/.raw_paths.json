@@ -19,5 +19,6 @@
   "@openzeppelin/contracts@5.6.1/utils/Address.sol": ".deps/npm/@openzeppelin/contracts@5.6.1/utils/Address.sol",
   "@openzeppelin/contracts@5.6.1/utils/Errors.sol": ".deps/npm/@openzeppelin/contracts@5.6.1/utils/Errors.sol",
   "@openzeppelin/contracts@5.6.1/utils/LowLevelCall.sol": ".deps/npm/@openzeppelin/contracts@5.6.1/utils/LowLevelCall.sol",
-  "https://raw.githubusercontent.com/exo-digital-labs/ERC721R/main/contracts/IERC721R.sol": ".deps/github/exo-digital-labs/ERC721R@main/contracts/IERC721R.sol"
+  "https://raw.githubusercontent.com/exo-digital-labs/ERC721R/main/contracts/IERC721R.sol": ".deps/github/exo-digital-labs/ERC721R@main/contracts/IERC721R.sol",
+  "@openzeppelin/contracts@5.6.1/security/ReentrancyGuard.sol": ".deps/npm/@openzeppelin/contracts@5.6.1/security/ReentrancyGuard.sol"
 }
