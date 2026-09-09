@@ -8,6 +8,10 @@ import "https://github.com/exo-digital-labs/ERC721R/blob/main/contracts/ERC721A.
 import "https://github.com/exo-digital-labs/ERC721R/blob/main/contracts/IERC721R.sol";
 
 abstract contract Cortex is ERC721A, IERC721R, Ownable {
+    uint256 public constant mintPrice = 1 ether;
+    uint256 public constant mintPerUser = 4;
+    uint256 public constant totalSupplyLimit = 10000;
+
     constructor(
         address initialOwner
     ) ERC721A("Cortex ", "CTX") Ownable(initialOwner) {}
@@ -16,7 +20,18 @@ abstract contract Cortex is ERC721A, IERC721R, Ownable {
         return "ipfs://QmbseRTJWSsLfhsiWwuB2R7EtN93TxfoaMz1S5FXtsFEUB/";
     }
 
-    function safeMint(address to, uint256 tokenId) public onlyOwner {
-        _safeMint(to, tokenId);
+    function safeMint(uint256 quantity) public payable onlyOwner {
+        require(quantity > 0, "Quantity must be greater than 0");
+        require(msg.value >= mintPrice * quantity, "Insufficient funds");
+        require(
+            _numberMinted(msg.sender) + quantity <= mintPerUser,
+            "Mint Limit Reacheds"
+        );
+        require(
+            _totalMinted() + quantity <= totalSupplyLimit,
+            "Supply Limit Reached"
+        );
+
+        _safeMint(msg.sender, quantity);
     }
 }
