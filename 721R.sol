@@ -69,15 +69,15 @@ abstract contract Cortex is ERC721A, IERC721R, Ownable {
         //ownership
         _transfer(address(this), refundAdddress, tokenId);
 
+        // make a yes refuned NFT
+
+        hasRefunded[tokenId] = true;
+
         // pay
 
         (bool sucess, ) = payable(msg.sender).call{value: refundAmt}("");
 
         require(sucess, "Transfer Failed");
-
-        // make a yes refuned NFT
-
-        hasRefunded[tokenId] = true;
     }
 
     function getrefundDeadLine(uint256 tokenId) public view returns (uint256) {
