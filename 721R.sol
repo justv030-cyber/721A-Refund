@@ -34,4 +34,10 @@ abstract contract Cortex is ERC721A, IERC721R, Ownable {
 
         _safeMint(msg.sender, quantity);
     }
+
+    function withdraw() external onlyOwner {
+        uint256 currentBalance = address(this).balance;
+        (bool sucess, ) = payable(msg.sender).call{value: currentBalance}("");
+        require(sucess, "Transfer Failed");
+    }
 }
